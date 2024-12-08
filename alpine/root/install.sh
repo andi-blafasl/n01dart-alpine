@@ -28,7 +28,11 @@ echo
 apk fix
 echo
 
-setup-bootable /media/cdrom $partdev
+bootmedia=cdrom
+if [ -f "/media/usb/syslinux.cfg" ];
+	bootmedia=usb
+fi
+setup-bootable /media/$bootmedia $partdev
 
 echo
 
@@ -64,9 +68,9 @@ setup-lbu LABEL=APKOVL
 umount $partdev 2>/dev/null
 mount -o rw $partdev /media/LABEL=APKOVL 
 setup-apkcache /media/LABEL=APKOVL/cache
-
 lbu ci
 
+echo
 echo "reboot now for auto login kiosk mode"
 
 exit 0
