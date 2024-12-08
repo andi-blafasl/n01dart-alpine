@@ -27,14 +27,17 @@ rc_add() {
 tmp="$(mktemp -d)"
 trap cleanup EXIT
 
+workspace=$(find /workspaces/ -name alpine -type d)
+workspace=${workspace%/alpine}
+
 mkdir -p "$tmp"/home
-cp -r /workspaces/n01dart/alpine/home/n01dart "$tmp"/home/
+cp -r "$workspace/alpine/home/n01dart" "$tmp"/home/
 chown -R 1000:1000 "$tmp"/home/n01dart
 find "$tmp"/home/n01dart -type d -exec chmod 755 {} \;
 find "$tmp"/home/n01dart -type f -exec chmod 644 {} \;
 chmod -R 0755 "$tmp"/home/n01dart/.setxkbmap
 
-cp -r /workspaces/n01dart/alpine/root "$tmp"/
+cp -r "$workspace/alpine/root" "$tmp"/
 chown -R root:root "$tmp"/root
 find "$tmp"/root -type d -exec chmod 755 {} \;
 find "$tmp"/root -type f -exec chmod 644 {} \;
@@ -42,13 +45,13 @@ chmod 0700 "$tmp"/root
 chmod -R 0755 "$tmp"/root/*.sh
 
 mkdir -p "$tmp"/var/www/localhost/htdocs
-unzip -q /workspaces/n01dart/n01_web_*.zip -d "$tmp"/var/www/localhost/htdocs/
+unzip -q "$workspace"/n01_web_*.zip -d "$tmp"/var/www/localhost/htdocs/
 
 mkdir -p "$tmp"/etc/apk/protected_paths.d
-makefile root:root 0644 "$tmp"/etc/apk/protected_paths.d/lbu.list </workspaces/n01dart/alpine/etc/apk/protected_paths.d/lbu.list
+makefile root:root 0644 "$tmp"/etc/apk/protected_paths.d/lbu.list <"$workspace/alpine/etc/apk/protected_paths.d/lbu.list"
 
 mkdir -p "$tmp"/etc/apk
-makefile root:root 0644 "$tmp"/etc/apk/world </workspaces/n01dart/alpine/etc/apk/world
+makefile root:root 0644 "$tmp"/etc/apk/world <"$workspace/alpine/etc/apk/world"
 
 
 rc_add devfs sysinit
