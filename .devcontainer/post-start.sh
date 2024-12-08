@@ -20,7 +20,7 @@ doas apk update
 
 echo
 # Link files from workspace into aports folder
-for profile in /workspaces/n01dart/profiles/mkimg.*.sh; do
+for profile in /workspaces/*/profiles/mkimg.*.sh; do
   SRC=$profile
   BNAME=$(basename $SRC)
   DST=$BUILDHOME/aports/scripts/$BNAME
@@ -40,7 +40,7 @@ for profile in /workspaces/n01dart/profiles/mkimg.*.sh; do
     fi
   fi
 done
-for apkovl in /workspaces/n01dart/apkovl/genapkovl-*.sh; do
+for apkovl in /workspaces/*/apkovl/genapkovl-*.sh; do
   SRC=$apkovl
   BNAME=$(basename $SRC)
   DST=$BUILDHOME/aports/scripts/$BNAME
