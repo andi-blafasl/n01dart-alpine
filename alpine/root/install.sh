@@ -29,7 +29,7 @@ apk fix
 echo
 
 bootmedia=cdrom
-if [ -f "/media/usb/syslinux.cfg" ];
+if [ -f "/media/usb/syslinux.cfg" ]; then
 	bootmedia=usb
 fi
 setup-bootable /media/$bootmedia $partdev
