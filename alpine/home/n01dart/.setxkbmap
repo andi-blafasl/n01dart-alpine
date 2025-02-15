@@ -1,4 +1,0 @@
-#!/bin/sh
-
-setxkbmap $(basename /etc/keymap/* | cut -c1-2) 
-

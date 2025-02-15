@@ -2,12 +2,22 @@
 
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 
-<menu id="system-menu" label="System">
+<menu id="konfig-menu" label="System">
+  <item label="Xterm">
+    <action name="Execute"><command>xterm</command></action>
+  </item>
+  <separator />
   <item label="Openbox Configuration Manager">
     <action name="Execute">
       <command>obconf</command>
       <startupnotify><enabled>yes</enabled></startupnotify>
     </action>
+  </item>
+  <item label="Disable Screensaver">
+    <action name="Execute"><command>xset s off -dpms</command></action>
+  </item>
+  <item label="Eisable Screensaver 1h">
+    <action name="Execute"><command>xset s 600 +dpms</command></action>
   </item>
   <separator />
   <item label="Reconfigure Openbox">
@@ -17,9 +27,6 @@
 
 <menu id="root-menu" label="Openbox 3">
   <separator label="Applications" />
-  <item label="Xterm">
-    <action name="Execute"><command>xterm</command></action>
-  </item>
   <item label="Firefox">
     <action name="Execute">
       <command>firefox</command>
@@ -29,12 +36,33 @@
       </startupnotify>
     </action>
   </item>
-  <separator label="System" />
-  <menu id="system-menu"/>
+  <item label="Firefox Kiosk">
+    <action name="Execute">
+      <command>firefox --kiosk -private-window http://localhost/n01.html</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+        <wmclass>Firefox</wmclass>
+      </startupnotify>
+    </action>
+  </item>
+  <separator label="Konfig" />
+  <menu id="konfig-menu"/>
   <separator />
   <item label="Log Out">
     <action name="Exit">
       <prompt>yes</prompt>
+    </action>
+  </item>
+  <item label="Reboot">
+    <action name="Execute">
+      <command>doas /sbin/reboot</command>
+      <prompt>Reboot?</prompt>
+    </action>
+  </item>
+  <item label="Shutdown">
+    <action name="Execute">
+      <command>doas /sbin/poweroff</command>
+      <prompt>Shutdown?</prompt>
     </action>
   </item>
 </menu>

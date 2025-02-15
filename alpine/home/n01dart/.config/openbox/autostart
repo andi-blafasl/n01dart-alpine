@@ -16,4 +16,3 @@
 #
 #xfce-mcs-manager &
 firefox -kiosk -private-window http://localhost/n01.html &
-#firefox -kiosk -private-window http://localhost/schedule/ &

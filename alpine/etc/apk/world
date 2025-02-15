@@ -1,6 +1,7 @@
 agetty
 darkhttpd
 eudev
+doas
 firefox
 font-awesome
 font-dejavu
@@ -13,7 +14,7 @@ mesa-dri-gallium
 obconf-qt
 openbox
 setxkbmap
-tint2
+xset
 udev-init-scripts
 udev-init-scripts-openrc
 xf86-input-libinput
@@ -26,3 +27,6 @@ dosfstools
 syslinux
 tzdata
 musl-locales
+grub
+grub-bios
+grub-efi

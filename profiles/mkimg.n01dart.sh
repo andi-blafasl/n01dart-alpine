@@ -10,6 +10,7 @@ profile_n01dart() {
                 agetty
                 darkhttpd
                 eudev
+                doas
                 firefox
                 font-awesome
                 font-dejavu
@@ -22,7 +23,7 @@ profile_n01dart() {
                 obconf-qt
                 openbox
                 setxkbmap
-                tint2
+                xset
                 udev-init-scripts
                 udev-init-scripts-openrc
                 xf86-input-libinput
@@ -35,6 +36,9 @@ profile_n01dart() {
                 syslinux
                 tzdata
                 musl-locales
+                grub
+                grub-bios
+                grub-efi
                 "
 
         local _k _a

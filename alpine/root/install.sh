@@ -70,6 +70,8 @@ mount -o rw $partdev /media/LABEL=APKOVL
 setup-apkcache /media/LABEL=APKOVL/cache
 lbu ci
 
+#setup-disk -m sys $diskdev
+
 echo
 echo "reboot now for auto login kiosk mode"
 

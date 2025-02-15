@@ -35,7 +35,6 @@ cp -r "$workspace/alpine/home/n01dart" "$tmp"/home/
 chown -R 1000:1000 "$tmp"/home/n01dart
 find "$tmp"/home/n01dart -type d -exec chmod 755 {} \;
 find "$tmp"/home/n01dart -type f -exec chmod 644 {} \;
-chmod -R 0755 "$tmp"/home/n01dart/.setxkbmap
 
 cp -r "$workspace/alpine/root" "$tmp"/
 chown -R root:root "$tmp"/root
@@ -52,6 +51,9 @@ makefile root:root 0644 "$tmp"/etc/apk/protected_paths.d/lbu.list <"$workspace/a
 
 mkdir -p "$tmp"/etc/apk
 makefile root:root 0644 "$tmp"/etc/apk/world <"$workspace/alpine/etc/apk/world"
+
+mkdir -p "$tmp"/etc/doas.d
+makefile root:root 0644 "$tmp"/etc/doas.d/doas.conf <"$workspace/alpine/etc/doas.d/doas.conf"
 
 
 rc_add devfs sysinit
